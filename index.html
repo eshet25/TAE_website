@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tsion A. Eshetu | Visual attention and learned distractor suppression</title>
+  <meta name="description" content="Tsion A. Eshetu is a master's student in psychology at Wake Forest University who studies how people learn to ignore distractions, using eye tracking. Applying to PhD programs for Fall 2027.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Tsion A. Eshetu">
+  <meta property="og:description" content="Research on visual attention, learned distractor suppression, and eye movements.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="cloud" viewBox="0 0 200 80">
+      <g fill="currentColor">
+        <ellipse cx="58" cy="50" rx="46" ry="24"/>
+        <ellipse cx="108" cy="38" rx="42" ry="32"/>
+        <ellipse cx="150" cy="52" rx="38" ry="22"/>
+        <rect x="30" y="50" width="146" height="24" rx="12"/>
+      </g>
+    </symbol>
+  </svg>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="#panel-about">Tsion A. Eshetu</a>
+      <div class="nav-group">
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#panel-about">About</a></li>
+            <li><a href="#panel-research">Research</a></li>
+            <li><a href="#panel-experience">Experience</a></li>
+            <li><a href="#panel-presentations">Presentations</a></li>
+            <li><a href="#panel-contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="theme-btn" id="theme-toggle" aria-label="Color theme: automatic. Activate to change.">
+          <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span id="theme-label">Theme: Auto</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="sky" id="sky" data-sky="day" data-motion="auto">
+    <div class="sky-scene" aria-hidden="true">
+      <div class="sky-body"></div>
+      <div class="sky-stars"></div>
+      <div class="cloud-layer" style="--d:0.4">
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:7rem;--y:24%;--dur:170s;--delay:-40s;--sx:10vw;--o:0.7"><use href="#cloud"/></svg>
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:9rem;--y:12%;--dur:190s;--delay:-120s;--sx:55vw;--o:0.6"><use href="#cloud"/></svg>
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:6rem;--y:44%;--dur:210s;--delay:-90s;--sx:82vw;--o:0.55"><use href="#cloud"/></svg>
+      </div>
+      <div class="cloud-layer" style="--d:0.8">
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:12rem;--y:30%;--dur:120s;--delay:-70s;--sx:30vw;--o:0.85"><use href="#cloud"/></svg>
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:10rem;--y:52%;--dur:140s;--delay:-15s;--sx:68vw;--o:0.8"><use href="#cloud"/></svg>
+      </div>
+      <div class="cloud-layer" style="--d:1.4">
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:18rem;--y:62%;--dur:90s;--delay:-55s;--sx:45vw;--o:0.95"><use href="#cloud"/></svg>
+        <svg class="cloud" viewBox="0 0 200 80" aria-hidden="true" style="--w:14rem;--y:20%;--dur:100s;--delay:-10s;--sx:5vw;--o:0.9"><use href="#cloud"/></svg>
+      </div>
+    </div>
+    <div class="wrap sky-controls" hidden>
+      <button type="button" class="sky-btn" id="sky-change">Change sky: Day</button>
+      <button type="button" class="sky-btn" id="sky-motion">Pause motion</button>
+    </div>
+    <p class="visually-hidden" id="sky-status" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="wrap layout">
+
+    <!-- ================= PROFILE ================= -->
+    <aside class="profile" aria-label="Profile">
+      <figure class="avatar">
+        <img src="images/tsion-eshetu-headshot.jpg" width="448" height="560"
+             alt="Tsion Eshetu smiling at a research conference. She has dark curly hair and wears a pinstriped vest over a white turtleneck.">
+      </figure>
+      <h1>Tsion A. Eshetu</h1>
+      <p class="role">Master's student in Psychology</p>
+      <p class="affil">Wake Forest University<br>SLAP Lab</p>
+
+      <ul class="profile-links">
+        <li>
+          <a href="mailto:eshet25@wfu.edu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            Email
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/tsioneshetu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://sites.google.com/view/slaplab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            SLAP Lab website
+          </a>
+        </li>
+      </ul>
+      <p class="loc">Winston-Salem, North Carolina</p>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main" id="main">
+
+      <div class="tabpanel" id="panel-about">
+      <section class="panel-block" aria-labelledby="about-title">
+        <h2 id="about-title">About me</h2>
+        <p class="lead">I study how experience teaches people to ignore distractions. Using eye tracking, I ask how we learn to keep our eyes off attention-grabbing distractors, and how quickly we look away when we do land on them.</p>
+        <p>I am a master's student in the SLAP Lab (Suppression, Learning, Attention, and Perception) at Wake Forest University, advised by Dr. Brad T. Stilwell. Before graduate school, I spent nearly three years coordinating clinical vision and brain research on schizophrenia at the University of Rochester Medical Center. I am applying to PhD programs in psychology for Fall 2027.</p>
+        <div class="about-actions">
+          <p>Here is a PDF of my CV, if you would like the full details:</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="files/Tsion-Eshetu-CV.pdf">Download CV (PDF)</a>
+            <a class="btn" href="#panel-research">Read about my research</a>
+            <a class="btn" href="mailto:eshet25@wfu.edu">Email me</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-block award" aria-labelledby="award-title">
+        <p class="award-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>
+          Featured award
+        </p>
+        <h2 id="award-title">Second place, Sigma Xi Student Research Showcase 2026</h2>
+        <p>I placed second in the Graduate Student Division of this online science-communication competition, where students present their research to a general audience. My presentation, <em>Skill-Based Learned Oculomotor Avoidance</em>, explains how the brain learns to ignore distractions.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://events.projectboard.world/srs2026/project/225589">View my presentation</a>
+        </div>
+      </section>
+
+      <section class="panel-block" aria-label="Interests and education">
+        <div class="pair">
+          <div>
+            <h2 id="interests-title">Interests</h2>
+            <ul class="tick-list" aria-labelledby="interests-title">
+              <li>Visual attention</li>
+              <li>Learned distractor suppression</li>
+              <li>Eye movements</li>
+              <li>Individual differences</li>
+            </ul>
+          </div>
+          <div>
+            <h2 id="education-title">Education</h2>
+            <ul class="edu-list" aria-labelledby="education-title">
+              <li>
+                <strong>MS in Psychology, expected May 2027</strong>
+                <span>Wake Forest University</span>
+              </li>
+              <li>
+                <strong>BA in Psychology and Brain and Cognitive Sciences</strong>
+                <span>University of Rochester. High Distinction.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-block" id="updates" aria-labelledby="updates-title">
+        <h2 id="updates-title">Recent updates</h2>
+        <ul class="updates">
+          <li>
+            <span class="when">Nov 2026</span>
+            <span><span class="tag">Upcoming</span>Oral presentation at the OPAM conference, and a poster at the Psychonomic Society Annual Meeting, both in San Diego.</span>
+          </li>
+          <li>
+            <span class="when">Sept 2026</span>
+            <span>Received a Professional Development Award from OPAM (<a href="https://www.opamconference.com/research-spotlights">view spotlight</a>).</span>
+          </li>
+          <li>
+            <span class="when">May 2026</span>
+            <span>Presented my first-year master's project at the 2026 Vision Sciences Society Annual Meeting.</span>
+          </li>
+          <li>
+            <span class="when">Apr 2026</span>
+            <span>Won second place in the Graduate Student Division of the Sigma Xi Student Research Showcase (<a href="https://events.projectboard.world/srs2026/project/225589">view my presentation</a>).</span>
+          </li>
+          <li>
+            <span class="when">Mar 2026</span>
+            <span>Presented my first-year master's project at the North Carolina Conference on Cognition.</span>
+          </li>
+        </ul>
+      </section>
+      </div><!-- /panel-about -->
+
+      <!-- ================= FEATURED RESEARCH ================= -->
+      <div class="tabpanel" id="panel-research">
+      <section aria-labelledby="research-title">
+        <div class="research-hero panel-block">
+          <figure class="hook">
+            <img src="images/attention-hook.jpg" width="512" height="642" decoding="async"
+                 alt="A dense black-and-white crowd of people in hats, all facing away from the camera, except one woman in a bright red coat and hat who stands out immediately.">
+          </figure>
+          <div class="hero-copy">
+            <h2 id="research-title" class="hero-question">What caught your eye first?</h2>
+            <p class="hero-line">Probably the person in red, before you even meant to look, right?</p>
+            <p class="hero-line">That instant, involuntary pull toward a salient color is exactly what I study:</p>
+            <p class="hero-line hero-line-indent">How our attention gets captured by something irrelevant to the task, and how experience teaches our eyes to resist it.</p>
+          </div>
+        </div>
+
+        <h3 class="subhead" id="projects-title">Current projects</h3>
+
+        <article class="card" aria-labelledby="fyp-title">
+          <div class="card-media">
+            <img src="images/poster-vss-2026-thumb.jpg" width="640" height="480" loading="lazy" decoding="async"
+                 alt="Thumbnail of the research poster titled Skill-Based Learned Oculomotor Avoidance. A full text description is in the summary below.">
+          </div>
+          <div>
+            <p class="card-meta">Tsion A. Eshetu and Brad T. Stilwell. Poster at the Vision Sciences Society, May 2026. Manuscript in preparation.</p>
+            <h3 id="fyp-title">Skill-based learned oculomotor avoidance</h3>
+            <p class="abstract">Bright distractors grab our attention, but experience can teach us to suppress them. Using eye tracking, we tested whether people learn to avoid looking at a distractor, to look away faster once they land on it, or both. They did both, and it looks like a learned skill.</p>
+            <div class="card-actions">
+              <a class="btn btn-sm" href="files/eshetu-stilwell-vss-2026-poster.pdf">Poster (PDF)</a>
+            </div>
+          </div>
+
+          <details>
+            <summary>Read the full summary</summary>
+            <div class="details-body">
+              <div class="demo">
+                <figure>
+                  <svg class="search-display" viewBox="0 0 420 380" role="img" aria-labelledby="sd-title sd-desc">
+                    <title id="sd-title">Example search display</title>
+                    <desc id="sd-desc">Eight items arranged in a ring around a small cross. One is a green diamond, labeled target. One is a red circle, labeled distractor. The other six are green circles. Each item has a short line inside it.</desc>
+                    <path class="fix" d="M200 190h20M210 180v20"/>
+                    <circle class="item green" cx="320" cy="190" r="24"/><path class="glyph" d="M320 179v22"/>
+                    <circle class="item red" cx="288" cy="268" r="24"/><path class="glyph-on-red" d="M277 268h22"/>
+                    <circle class="item green" cx="210" cy="300" r="24"/><path class="glyph" d="M199 300h22"/>
+                    <circle class="item green" cx="132" cy="268" r="24"/><path class="glyph" d="M132 257v22"/>
+                    <circle class="item green" cx="100" cy="190" r="24"/><path class="glyph" d="M89 190h22"/>
+                    <polygon class="item green" points="132,84 160,112 132,140 104,112"/><path class="glyph" d="M132 101v22"/>
+                    <circle class="item green" cx="210" cy="80" r="24"/><path class="glyph" d="M210 69v22"/>
+                    <circle class="item green" cx="288" cy="112" r="24"/><path class="glyph" d="M277 112h22"/>
+                    <path class="leader" d="M64 58L106 92"/><text class="label" x="12" y="48">target</text>
+                    <path class="leader" d="M338 334L306 288"/><text class="label" x="306" y="356">distractor</text>
+                  </svg>
+                  <figcaption>A search display like the ones in my experiments. The target is the diamond. The red circle is the distractor.</figcaption>
+                </figure>
+                <div>
+                  <p><strong>Where did your eyes go first?</strong> Find the diamond. Chances are your eyes were pulled toward the red circle before you found it, even though it is not what you were looking for. That pull is what I study.</p>
+                </div>
+              </div>
+
+              <h4>The question</h4>
+              <p>Salient distractors, like a bright warning light on a dashboard, pull attention away from what we are doing. Experience can teach people to suppress them. But what changes with experience? Do people learn to avoid looking at the distractor in the first place, learn to look away faster once they land on it, or both?</p>
+
+              <h4>What we did</h4>
+              <p>Participants searched for a target shape while a task-irrelevant, brightly colored distractor appeared. One distractor color showed up much more often than the others. we recorded their eye movements with an EyeLink 1000 Plus eye tracker, which let us separate where the eyes land first from how long they stay there.</p>
+
+              <h4>What we found</h4>
+              <ul class="findings">
+                <li><strong>Distractors slowed people down less when they were the frequent color.</strong> The slowdown was 124 ms for the frequent color and 157 ms for the rare colors.</li>
+                <li><strong>People got better at avoiding the distractor.</strong> Over the session, their first look landed on the distractor less often (a 19.6% decrease from the first block to the last), and less often still for the frequent color.</li>
+                <li><strong>People got faster at letting go.</strong> When they did look at the distractor, they spent 53 ms less time on it by the end of the session.</li>
+              </ul>
+
+              <h4>Why it matters</h4>
+              <p>The improvement showed up for every distractor color, not only the frequent one. That is more consistent with people building a general skill, made of both avoidance and faster disengagement, than with simply tracking how often each color appears. we call this pattern learned oculomotor avoidance (oculomotor means relating to eye movements).</p>
+
+              <figure class="poster">
+                <img src="images/poster-vss-2026.jpg" width="1800" height="1350" loading="lazy" decoding="async"
+                     alt="Research poster titled Skill-Based Learned Oculomotor Avoidance, by Tsion A. Eshetu and Brad T. Stilwell. It has sections for the introduction, general method, reaction-time results, first-fixation results, and conclusions. A full text description follows the image.">
+                <figcaption>Poster presented at the Vision Sciences Society Annual Meeting, May 2026. <a href="files/eshetu-stilwell-vss-2026-poster.pdf">Open the poster as a PDF</a>.</figcaption>
+              </figure>
+
+              <details>
+                <summary>Text description of the poster</summary>
+                <div class="details-body">
+                  <h4>Introduction</h4>
+                  <p>Salient distractors, such as a color singleton, capture attention during visual search for a target, such as a shape singleton. Experience can be used to learn to suppress salient distractors, but the mechanism is unclear. Three hypotheses are tested: oculomotor suppression, rapid disengagement, and learned oculomotor avoidance. The general aim is to test the real-time dynamics of how we learn to suppress color singletons, using eye tracking.</p>
+                  <h4>General method</h4>
+                  <p>In the search task, the target is a uniquely shaped item among green items, and a color singleton distractor appears on some trials. One high-frequency singleton color appeared on 75% of trials, and four low-frequency singleton colors shared the other 25%. Colors were counterbalanced across participants.</p>
+                  <h4>Reaction time results</h4>
+                  <p>Mean reaction time was fastest when the singleton was absent. Compared with singleton-absent trials, the singleton slowed responses by 124 ms for the high-frequency color and by 157 ms for the low-frequency colors. The 37 ms difference between the two was reliable (p = .005). The singleton cost shrank across the 14 blocks of the experiment and was smaller for the high-frequency color. Key finding: participants were less distracted over time, and more so for high-frequency than low-frequency colors.</p>
+                  <h4>First fixation results</h4>
+                  <p>The percentage of first fixations landing on the singleton fell across blocks, with a decrease of 19.6% from the first block to the last (p &lt; .001), and it was lower overall for the high-frequency color (a 7.6% difference, p &lt; .01). Key finding, oculomotor suppression: participants got better at avoiding the singleton over time. Dwell time on the singleton also fell across blocks, by 53 ms from the first block to the last (p &lt; .001). Key finding, rapid disengagement: participants got better at disengaging from the singleton over time.</p>
+                  <h4>Conclusions</h4>
+                  <p>The findings support both the oculomotor suppression hypothesis and the rapid disengagement hypothesis. Together, this combined mechanism is termed learned oculomotor avoidance. It aligns with negative reinforcement in the animal learning literature, such as avoidance learning and escape learning.</p>
+                </div>
+              </details>
+            </div>
+          </details>
+        </article>
+
+        <article class="card" id="thesis" aria-labelledby="thesis-title">
+          <div class="card-media">
+            <svg viewBox="60 46 300 290" aria-hidden="true" focusable="false" class="search-display">
+              <path class="fix" d="M200 190h20M210 180v20"/>
+              <circle class="item green" cx="320" cy="190" r="24"/><path class="glyph" d="M320 179v22"/>
+              <circle class="item red" cx="288" cy="268" r="24"/><path class="glyph-on-red" d="M277 268h22"/>
+              <circle class="item green" cx="210" cy="300" r="24"/><path class="glyph" d="M199 300h22"/>
+              <circle class="item green" cx="132" cy="268" r="24"/><path class="glyph" d="M132 257v22"/>
+              <circle class="item green" cx="100" cy="190" r="24"/><path class="glyph" d="M89 190h22"/>
+              <polygon class="item green" points="132,84 160,112 132,140 104,112"/><path class="glyph" d="M132 101v22"/>
+              <circle class="item green" cx="210" cy="80" r="24"/><path class="glyph" d="M210 69v22"/>
+              <circle class="item green" cx="288" cy="112" r="24"/><path class="glyph" d="M277 112h22"/>
+            </svg>
+          </div>
+          <div>
+            <p class="card-meta">Master's thesis with Brad T. Stilwell. In progress.</p>
+            <h3 id="thesis-title">Why do some people learn to ignore distractions better than others?</h3>
+            <p class="abstract">My first-year project shows how people get better at ignoring distractors, on average. My thesis asks whether individual differences, such as attention control or distractibility, predict who learns this skill best.</p>
+          </div>
+
+          <details>
+            <summary>Read the full summary</summary>
+            <div class="details-body">
+              <p class="status">In progress. Design and measures are still being finalized.</p>
+              <p>My first-year project shows how people get better at ignoring distractors with experience, on average. It does not explain why some people improve more than others. My thesis asks whether individual differences predict how well people learn this skill, using the same eye-tracking search task.</p>
+              <p>I am considering predictors such as working memory and attention control, trait anxiety, mind wandering, and action video game experience. Different traits may relate to different parts of the skill: how often the eyes are drawn to the distractor first, or how long they stay once they get there.</p>
+            </div>
+          </details>
+        </article>
+      </section>
+      </div><!-- /panel-research -->
+
+      <!-- ================= EXPERIENCE ================= -->
+      <div class="tabpanel" id="panel-experience">
+      <section aria-labelledby="experience-title">
+        <h2 id="experience-title">Experience</h2>
+
+        <h3 class="subhead">Research</h3>
+        <ul class="entries">
+          <li class="entry">
+            <div class="entry-when">August 2025 to present</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20"/></svg>Graduate Student Researcher</h4>
+              <p class="where">SLAP Lab, Wake Forest University. Advisor: Dr. Brad T. Stilwell</p>
+            </div>
+          </li>
+          <li class="entry">
+            <div class="entry-when">September 2022 to June 2025</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20"/></svg>Clinical Research Coordinator</h4>
+              <p class="where">Center for Retina and Brain, University of Rochester Medical Center. Supervisors: Dr. Steven M. Silverstein, Dr. Joy J. Choi, and Dr. Judy Thompson</p>
+            </div>
+          </li>
+          <li class="entry">
+            <div class="entry-when">February 2021 to May 2022</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20"/></svg>Undergraduate Research Assistant</h4>
+              <p class="where">Developmental and Behavioral Pediatrics, University of Rochester Medical Center. Supervisor: Dr. Lynne E. Levato</p>
+            </div>
+          </li>
+          <li class="entry">
+            <div class="entry-when">February 2021 to May 2022</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16M2 13h20"/></svg>Lab Coordinator</h4>
+              <p class="where">Lab for Behavioral Health Skills, University of Rochester. Supervisor: Dr. Wendi Cross</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3 class="subhead">Teaching</h3>
+        <ul class="entries">
+          <!-- TODO: add the start date for PSY 211 (the CV says January 2025, which is before the MS program began in August 2025). -->
+          <li class="entry">
+            <div class="entry-when">Wake Forest University</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Lab Instructor</h4>
+              <p class="where">Research Methods in Psychology (PSY 211)</p>
+            </div>
+          </li>
+          <li class="entry">
+            <div class="entry-when">Fall 2025</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Teaching Assistant</h4>
+              <p class="where">Methods in Psychological Research (PSY 210) and Introductory Psychology (PSY 151), Wake Forest University</p>
+            </div>
+          </li>
+          <li class="entry">
+            <div class="entry-when">Fall 2021</div>
+            <div>
+              <h4><svg class="entry-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Teaching Assistant</h4>
+              <p class="where">Neuropsychology (PSYC/BCSC 242), University of Rochester</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3 class="subhead">Awards and honors</h3>
+        <ul class="plain-list">
+          <li><span>Professional Development Award, Object Perception, Attention, and Memory Conference (<a href="https://www.opamconference.com/research-spotlights">spotlight</a>)</span><span class="yr">2026</span></li>
+          <li><span>Second Place, Graduate Student Division, Sigma Xi Student Research Showcase (<a href="https://events.projectboard.world/srs2026/project/225589">presentation</a>)</span><span class="yr">2026</span></li>
+          <li><span>ComSciCon-Triangle Workshop, selected participant (1 of 50 selected statewide)</span><span class="yr">2026</span></li>
+          <li><span>Psi Chi Honor Society</span><span class="yr">2021 to present</span></li>
+          <li><span>University of Rochester Dean's Scholarship ($36,000)</span><span class="yr">2018 to 2022</span></li>
+          <li><span>University of Rochester Dean's List</span><span class="yr">2018 to 2022</span></li>
+          <li><span>University of Rochester Kearn's Scholar</span><span class="yr">2019</span></li>
+          <li><span>University of Rochester Research and Innovation Grant ($4,500)</span><span class="yr">2018</span></li>
+        </ul>
+
+        <h3 class="subhead">Methods and tools</h3>
+        <div class="skill-group">
+          <h4 class="skill-cat"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Eye tracking and physiology</h4>
+          <ul class="skill-chips">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>EyeLink 1000 Plus eye tracking</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>EEG</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Electroretinography (ERG)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>OCT / OCT-angiography</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Fundus photography</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-cat"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Programming and statistics</h4>
+          <ul class="skill-chips">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>MATLAB</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>R</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>SPSS</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>SYSTAT</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-cat"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Clinical and cognitive assessment</h4>
+          <ul class="skill-chips">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>MINI</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>SCID-5</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>MoCA</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>MATRICS (MCCB)</li>
+          </ul>
+        </div>
+      </section>
+      </div><!-- /panel-experience -->
+
+      <!-- ================= PRESENTATIONS AND AWARDS ================= -->
+      <div class="tabpanel" id="panel-presentations">
+      <section aria-labelledby="presentations-title">
+        <h2 id="presentations-title">Presentations</h2>
+
+        <h3 class="subhead">Upcoming conference presentations</h3>
+        <ul class="pubs">
+          <li>
+            <span class="when">November 2026</span>
+            <strong>Eshetu, T. A.</strong>, &amp; Stilwell, B. T. <em>Skill-based learned oculomotor avoidance.</em> Oral presentation at the Object Perception, Attention, and Memory (OPAM) conference, San Diego, CA.
+          </li>
+          <li>
+            <span class="when">November 2026</span>
+            <strong>Eshetu, T. A.</strong>, &amp; Stilwell, B. T. <em>Skill-based learned oculomotor avoidance.</em> Poster at the Psychonomic Society Annual Meeting, San Diego, CA.
+          </li>
+          <li>
+            <span class="when">November 2026</span>
+            Stilwell, B. T., <strong>Eshetu, T. A.</strong>, &amp; Mu, B. B. <em>The skill of learning to suppress distractors: Learned oculomotor avoidance.</em> Poster at the Psychonomic Society Annual Meeting, San Diego, CA.
+          </li>
+        </ul>
+
+        <h3 class="subhead">Past conference presentations</h3>
+        <ul class="pubs">
+          <li>
+            <span class="when">May 2026</span>
+            <strong>Eshetu, T. A.</strong>, &amp; Stilwell, B. T. <em>Skill-based learned oculomotor avoidance.</em> Poster at the Vision Sciences Society (VSS) Annual Meeting, St. Pete Beach, FL. <a href="files/eshetu-stilwell-vss-2026-poster.pdf">Poster (PDF)</a>
+          </li>
+          <li>
+            <span class="when">March 2026</span>
+            <strong>Eshetu, T. A.</strong>, &amp; Stilwell, B. T. <em>Skill-based learned oculomotor avoidance.</em> Poster at the North Carolina Conference on Cognition, Durham, NC.
+          </li>
+          <li>
+            <span class="when">September 2025</span>
+            Dennis, H., <strong>Eshetu, T. A.</strong>, Dougherty, M., Elacqua, M., Silverstein, S. M., Lalor, E., &amp; Thompson, J. <em>Sensed presence experiences in individuals with and without schizophrenia: Clinical and perceptual correlates.</em> Poster at the Society for Research in Psychopathology (SRP) Annual Conference, Los Angeles, CA.
+          </li>
+          <li>
+            <span class="when">October 2024</span>
+            <strong>Eshetu, T. A.</strong>, Defayette, A. B., Blose, B., Benwitz, S., Brumfield, A., Curran, C., Leege, S., Pirro, M., Soe, S. L. Y., &amp; Silverstein, S. M. <em>Baseline suicide ideation in first-episode psychosis from AC-EPINET in Rochester: A comparison between schizophrenia and psychosis with mood patients.</em> Poster at the SRP Annual Conference, Montreal, Canada.
+          </li>
+          <li>
+            <span class="when">September 2023</span>
+            Tran, T., <strong>Eshetu, T. A.</strong>, Thompson, J. L., Robinson, B., Kenney, J., Williams, T. F., Waltz, J. A., Levin, J. A., Kafadar, E., Gold, J. M., Schiffman, J., Ellman, L. M., Walker, E. F., Strauss, G. P., Mittal, V. A., Zinbarg, R. E., Corlett, P. R., Powers, A. R., Woods, S. W., &amp; Silverstein, S. M. <em>Increased face perception on the Mooney Faces Test in a clinical high-risk sample: Replication, extension, and symptom and functioning correlates.</em> Poster at the SRP Annual Conference, St. Louis, MO.
+          </li>
+        </ul>
+
+        <h3 class="subhead">Manuscripts</h3>
+        <ul class="pubs">
+          <li>
+            <span class="when">In preparation</span>
+            <strong>Eshetu, T. A.</strong>, &amp; Stilwell, B. T. <em>Skill-based learned oculomotor avoidance.</em>
+          </li>
+        </ul>
+
+        <h3 class="subhead" id="gallery-title">Photos from poster sessions</h3>
+        <!-- To add a photo: copy one <li> block inside the right event group (or copy a whole <div class="gallery-group"> for a new event and put it in date order),
+             then change the image path, the alt text (describe the photo), and the caption. -->
+        <div class="gallery-group">
+          <h4 class="gallery-event" id="gal-vss26">Vision Sciences Society Annual Meeting, May 2026</h4>
+          <ul class="gallery" aria-labelledby="gal-vss26">
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/vss-2026-poster.jpg">
+                <img src="images/gallery/vss-2026-poster.jpg" width="1050" height="1400" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu smiling beside her research poster at a conference. She wears a light blue pinstriped vest, a white turtleneck, and a blue lanyard, and stands in front of a dark display board under a white tent ceiling.">
+              </a>
+            </figure>
+          </li>
+          </ul>
+        </div>
+        <div class="gallery-group">
+          <h4 class="gallery-event" id="gal-nccc26">North Carolina Conference on Cognition, March 2026</h4>
+          <ul class="gallery" aria-labelledby="gal-nccc26">
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/nccc-2026-with-advisor.jpg">
+                <img src="images/gallery/nccc-2026-with-advisor.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu and Dr. Brad T. Stilwell standing on either side of her poster in a bright conference hall. She wears a black pinstriped vest, and he wears a blue button-up shirt and glasses.">
+              </a>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/nccc-2026-poster.jpg">
+                <img src="images/gallery/nccc-2026-poster.jpg" width="1400" height="1082" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu smiling next to her poster on an easel, with her hand in her pocket, in a conference atrium.">
+              </a>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/nccc-2026-group.jpg">
+                <img src="images/gallery/nccc-2026-group.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+                     alt="A group of twelve smiling researchers wearing name badges, standing in a line in front of a large abstract painting with a blue sky.">
+              </a>
+            </figure>
+          </li>
+          </ul>
+        </div>
+        <div class="gallery-group">
+          <h4 class="gallery-event" id="gal-fyp">First-year project poster</h4>
+          <ul class="gallery" aria-labelledby="gal-fyp">
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/oculomotor-poster.jpg">
+                <img src="images/gallery/oculomotor-poster.jpg" width="1400" height="1050" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu smiling widely beside her poster, Skill-Based Learned Oculomotor Avoidance, which is hung on a wall with wood trim. She wears a cream knit vest over a tan turtleneck.">
+              </a>
+            </figure>
+          </li>
+          </ul>
+        </div>
+        <div class="gallery-group">
+          <h4 class="gallery-event" id="gal-srp24">Society for Research in Psychopathology, Montreal, October 2024</h4>
+          <ul class="gallery" aria-labelledby="gal-srp24">
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/srp-2024-poster.jpg">
+                <img src="images/gallery/srp-2024-poster.jpg" width="1050" height="1400" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu smiling next to her poster on suicide ideation in first-episode psychosis at a conference. She wears a cream ribbed sweater and a conference lanyard.">
+              </a>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/srp-2024-with-colleague.jpg">
+                <img src="images/gallery/srp-2024-with-colleague.jpg" width="1050" height="1400" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu and a colleague smiling on either side of a research poster at a conference poster session.">
+              </a>
+            </figure>
+          </li>
+          </ul>
+        </div>
+        <div class="gallery-group">
+          <h4 class="gallery-event" id="gal-srp23">Society for Research in Psychopathology, St. Louis, September 2023</h4>
+          <ul class="gallery" aria-labelledby="gal-srp23">
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/srp-2023-poster.jpg">
+                <img src="images/gallery/srp-2023-poster.jpg" width="1050" height="1400" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu smiling and gesturing toward a large blue research poster about face perception on the Mooney Faces Test.">
+              </a>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <a class="gallery-link" href="images/gallery/srp-2023-with-colleague.jpg">
+                <img src="images/gallery/srp-2023-with-colleague.jpg" width="1050" height="1400" loading="lazy" decoding="async"
+                     alt="Tsion Eshetu and a colleague smiling on either side of the blue Mooney Faces Test poster at a conference.">
+              </a>
+            </figure>
+          </li>
+          </ul>
+        </div>
+      </section>
+      </div><!-- /panel-presentations -->
+
+      <!-- ================= CONTACT ================= -->
+      <div class="tabpanel" id="panel-contact">
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p><a class="big-email" href="mailto:eshet25@wfu.edu">eshet25@wfu.edu</a></p>
+        <ul class="contact-list">
+          <li>
+            <a href="https://www.linkedin.com/in/tsioneshetu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 13.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V17"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://sites.google.com/view/slaplab">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              SLAP Lab website
+            </a>
+          </li>
+        </ul>
+        <p class="loc-line">Winston-Salem, North Carolina</p>
+      </section>
+      </div><!-- /panel-contact -->
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Last updated September 2026.</p>
+      <p><strong>Accessibility.</strong> I built this site to work with keyboards, screen readers, zoom, and different screen sizes, and I chose high-contrast colors and a typeface designed for readability. If you run into a barrier, please email me and I will fix it.</p>
+    </div>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <div class="lightbox-bar">
+      <span class="lightbox-count" aria-live="polite"></span>
+      <div class="group">
+        <button type="button" class="btn btn-sm lb-prev">Previous</button>
+        <button type="button" class="btn btn-sm lb-next">Next</button>
+        <button type="button" class="btn btn-sm btn-primary lb-close" autofocus>Close</button>
+      </div>
+    </div>
+    <figure>
+      <img src="" alt="">
+      <figcaption></figcaption>
+    </figure>
+  </dialog>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
